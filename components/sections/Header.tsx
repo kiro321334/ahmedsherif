@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-ink">
-      <div className="mx-auto flex h-[var(--nav-h)] max-w-5xl items-center justify-between px-8">
+      <div className="flex h-[var(--nav-h)] items-center justify-between px-page">
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-8">
             {NAV.map((n) => (
@@ -78,7 +78,7 @@ export default function Header() {
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="absolute inset-x-0 top-full border-t border-white/5 bg-ink px-8 pb-4 shadow-[0_20px_30px_rgba(0,0,0,0.5)] md:hidden"
+          className="absolute inset-x-0 top-full border-t border-white/5 bg-ink px-page pb-4 shadow-[0_20px_30px_rgba(0,0,0,0.5)] md:hidden"
         >
           <ul>
             {NAV.map((n) => (

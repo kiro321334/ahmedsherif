@@ -11,7 +11,7 @@ export default function Portfolio() {
   const list = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
 
   return (
-    <section id="work" aria-labelledby="work-title" className="bg-ink px-8 pb-16 pt-24">
+    <section id="work" aria-labelledby="work-title" className="bg-ink px-page pb-16 pt-24">
       <SectionHeading id="work-title" no="03" label="Featured Portfolio" title="Selected Works" />
       <div role="tablist" aria-label="Filter projects" className="no-scrollbar -mr-8 mt-6 flex gap-2 overflow-x-auto pr-8">
         {CATEGORIES.map((c) => (
@@ -27,7 +27,7 @@ export default function Portfolio() {
           <li key={p.slug}>
             <article className="overflow-hidden rounded-[20px] bg-surface">
               <div className="relative aspect-[350/208] w-full">
-                <Image src={`/images/projects/${p.slug}.webp`} alt={p.alt} fill loading="lazy"
+                <Image src={`/images/projects/${p.slug}.jpg`} alt={p.alt} fill loading="lazy"
                   sizes="(max-width: 480px) 90vw, 416px" className="object-cover" />
                 <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-cream/90">
                   {p.category}

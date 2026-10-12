@@ -36,3 +36,5 @@ body {
   outline: 2px solid #e8c07a;
   outline-offset: 3px;
 }
+/* padding جانبي بيخلّي المحتوى في عرض أقصى 72rem ومتوسّط، من غير wrapper */
+.px-page { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }

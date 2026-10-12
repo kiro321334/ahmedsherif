@@ -9,7 +9,6 @@ import { EMAIL, WHATSAPP } from "@/lib/site";
 
 const links = [
   { label: "Email", href: `mailto:${EMAIL}`, Icon: Mail },
-  { label: "Behance", href: "https://www.behance.net/", Icon: Palette },
   { label: "LinkedIn", href: "https://www.linkedin.com/", Icon: Card },
   { label: "Instagram", href: "https://www.instagram.com/", Icon: Camera },
 ];
@@ -19,7 +18,7 @@ export default function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="bg-[radial-gradient(ellipse_at_50%_30%,rgba(232,192,122,0.12),transparent_65%)] bg-deep px-8 py-20 text-center"
+      className="bg-[radial-gradient(ellipse_at_50%_30%,rgba(232,192,122,0.12),transparent_65%)] bg-deep px-page py-20 text-center"
     >
       <p className="flex items-center justify-center gap-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-gold">
         <span className="h-2 w-2 rounded-full bg-gold" />

@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <>
       <Header />
-      <div className="mx-auto min-h-screen max-w-[480px] bg-ink shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+      <div className="mx-auto min-h-screen">
         <main>
           <Hero />
           <Stats />

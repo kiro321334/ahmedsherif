@@ -3,7 +3,7 @@ import { EXPERIENCE } from "@/lib/data";
 
 export default function Experience() {
   return (
-    <section id="exp" aria-labelledby="exp-title" className="bg-band px-8 py-20">
+    <section id="exp" aria-labelledby="exp-title" className="bg-band px-page py-20">
       <SectionHeading id="exp-title" no="04" label="Career & Clients" title="Work Experience" />
       <ul className="mt-6 space-y-2">
         {EXPERIENCE.map((e) => (
