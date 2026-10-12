@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-h: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+  background: #15120e;
+}
+
+.hero-h {
+  height: calc(100vh - var(--nav-h));
+  height: calc(100svh - var(--nav-h));
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+body {
+  background: #15120e;
+  color: #f1ece4;
+  -webkit-font-smoothing: antialiased;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+:focus-visible {
+  outline: 2px solid #e8c07a;
+  outline-offset: 3px;
+}
