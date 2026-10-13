@@ -4,11 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SocialModal from "../SocialModal";
 import { CATEGORIES, PROJECTS } from "@/lib/data";
+import { SOCIAL_FOLDERS, type SocialFolder } from "@/lib/socialMedia";
 
 export default function Portfolio() {
   const [active, setActive] = useState<(typeof CATEGORIES)[number]>("All");
+  const [open, setOpen] = useState<SocialFolder | null>(null);
+
   const list = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
+  const showFolders = active === "All" || active === "Social Media";
 
   return (
     <section id="work" aria-labelledby="work-title" className="bg-ink px-page pb-16 pt-24">
@@ -44,7 +49,26 @@ export default function Portfolio() {
             </article>
           </li>
         ))}
+        {showFolders &&
+          SOCIAL_FOLDERS.map((f) => (
+            <li key={f.name}>
+              <button type="button" onClick={() => setOpen(f)} aria-label={`Open ${f.name} folder`}
+                className="block w-full overflow-hidden rounded-[20px] bg-surface text-left">
+                <div className="relative aspect-[350/208] w-full">
+                  <Image src={f.cover} alt={`${f.name} social media cover`} fill loading="lazy"
+                    sizes="(max-width: 480px) 90vw, 416px" className="object-cover" />
+                  <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-cream/90">
+                    Social Media
+                  </span>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-serif text-[26px] leading-tight text-cream">{f.name}</h3>
+                </div>
+              </button>
+            </li>
+          ))}
       </ul>
+      {open && <SocialModal title={open.name} images={open.images} onClose={() => setOpen(null)} />}
     </section>
   );
 }

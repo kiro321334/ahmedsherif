@@ -86,7 +86,10 @@ export const PROJECTS: {
     alt: "Almeroug Care Complex skin and beauty clinic identity with blue and red logo, signage and social media posts",
   },
 ];
-const used = new Set(PROJECTS.map((p) => p.category));
+const used = new Set<Category>([
+  ...PROJECTS.map((p) => p.category),
+  "Social Media",
+]);
 export const CATEGORIES: ("All" | Category)[] = [
   "All",
   ...ORDER.filter((c) => used.has(c)),

@@ -44,21 +44,6 @@ export default function Contact() {
         <MessageCircle size={14} aria-hidden="true" />
         Chat on WhatsApp
       </a>
-      <ul className="mt-8 flex justify-center gap-2">
-        {links.map(({ label, href, Icon }) => (
-          <li key={label}>
-            <a
-              href={href}
-              aria-label={label}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-gold"
-            >
-              <Icon size={16} aria-hidden="true" />
-            </a>
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }
