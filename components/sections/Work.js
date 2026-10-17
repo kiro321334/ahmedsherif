@@ -40,16 +40,16 @@ export default function Work({ c }) {
           </button>
         ))}
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
         {shown.map((p, i) => {
           const src = coverOf(p);
           return (
-            <article key={p.id} className="reveal">
+            <article key={p.id} className="reveal min-w-0">
               <button
                 type="button"
                 onClick={() => setOpen(p)}
                 aria-label={`${p.folder ? "Open folder" : "View"}: ${p.title}`}
-                className={`group block h-full w-full overflow-hidden rounded-2xl bg-panel2 text-left transition hover:-translate-y-1 ${p.folder ? "shadow-[0_7px_0_-3px_#2c2217,0_14px_0_-6px_#211a11]" : ""}`}
+                className={`group block h-full w-full overflow-hidden rounded-xl bg-panel2 text-left transition hover:-translate-y-1 sm:rounded-2xl ${p.folder ? "shadow-[0_5px_0_-2px_#2c2217,0_10px_0_-4px_#211a11] sm:shadow-[0_7px_0_-3px_#2c2217,0_14px_0_-6px_#211a11]" : ""}`}
               >
                 <span className="relative block aspect-[4/3] overflow-hidden bg-panel">
                   {src ? (
@@ -57,34 +57,35 @@ export default function Work({ c }) {
                       src={src}
                       alt={`${p.title} – ${p.category} by ${c.site.name}`}
                       fill
-                      sizes="(min-width:1024px) 330px, (min-width:768px) 45vw, 100vw"
+                      sizes="(min-width:1024px) 330px, (min-width:768px) 33vw, 50vw"
                       className="object-contain transition duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <span className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_50%_40%,#3a2d1a,#1c150e)] font-serif text-5xl italic text-gold/40">
+                    <span className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_50%_40%,#3a2d1a,#1c150e)] font-serif text-3xl italic text-gold/40 sm:text-5xl">
                       {p.title.slice(0, 2)}
                     </span>
                   )}
                   {p.folder && (
-                    <span className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-bg/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-cream backdrop-blur">
-                      <Icon n="folder" size={13} />
+                    <span className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-bg/80 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-cream backdrop-blur sm:bottom-3 sm:right-3 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[10px]">
+                      <Icon n="folder" size={12} />
                       {p.images?.length || 0}
                     </span>
                   )}
                 </span>
-                <span className="block p-5">
-                  <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[.2em] text-gold">
+
+                <span className="block p-3 sm:p-5">
+                  <span className="mb-1 block truncate text-[9px] font-semibold uppercase tracking-[.15em] text-gold sm:mb-2 sm:text-[11px] sm:tracking-[.2em]">
                     {p.category}
                   </span>
-                  <span className="block font-serif text-3xl leading-tight">
+                  <span className="block font-serif text-lg leading-tight sm:text-2xl lg:text-3xl">
                     {p.title}
                   </span>
-                  <span className="mt-2 block text-sm leading-relaxed text-cream/75">
+                  {/* <span className="mt-1.5 line-clamp-2 block text-xs leading-relaxed text-cream/75 sm:mt-2 sm:line-clamp-none sm:text-sm">
                     {p.desc}
-                  </span>
-                  <span className="mt-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.1em] text-gold">
+                  </span> */}
+                  <span className="mt-2.5 flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[.08em] text-gold sm:mt-4 sm:gap-2 sm:text-[11px] sm:tracking-[.1em]">
                     {p.folder ? w.folderLabel : w.singleLabel}
-                    <Icon n="arrowr" size={14} />
+                    <Icon n="arrowr" size={12} />
                   </span>
                 </span>
               </button>
