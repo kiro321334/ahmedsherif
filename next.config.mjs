@@ -1,18 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  poweredByHeader: false,
-  compress: true,
-  images: { formats: ["image/avif", "image/webp"], minimumCacheTTL: 31536000 },
-  experimental: { optimizePackageImports: ["lucide-react"] },
-  async headers() {
-    return [
-      { source: "/images/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
-      { source: "/(.*)", headers: [
-        { key: "X-Content-Type-Options", value: "nosniff" },
-        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-      ] },
-    ];
-  },
+const longCache = [{ key: 'Cache-Control', value: 'public, max-age=2592000, stale-while-revalidate=86400' }];
+export default {
+  reactStrictMode: true, poweredByHeader: false, compress: true,
+  // لودر مخصص: صور Cloudinary بتتحسّن على Cloudinary نفسه، والصور المحلية بتتقدّم زي ما هي
+  images: { loader: 'custom', loaderFile: './lib/loader.js', deviceSizes: [480, 828, 1200], imageSizes: [64, 128, 256, 384] },
+  async headers() { return ['/hero.jpg', '/about.jpg', '/icon.png', '/apple-icon.png', '/favicon.ico'].map((source) => ({ source, headers: longCache })); },
 };
-export default nextConfig;

@@ -1,40 +1,141 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --nav-h: 72px;
-}
-
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-h);
-  background: #15120e;
-}
-
-.hero-h {
-  height: calc(100vh - var(--nav-h));
-  height: calc(100svh - var(--nav-h));
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  scroll-padding-top: 72px;
 }
 body {
-  background: #15120e;
-  color: #f1ece4;
-  -webkit-font-smoothing: antialiased;
+  @apply bg-bg font-sans text-cream antialiased;
 }
-.no-scrollbar {
-  scrollbar-width: none;
+@layer components {
+  .num {
+    @apply font-serif text-2xl italic text-gold;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[.18em] text-gold;
+  }
+  .h2 {
+    @apply mt-1 pl-9 font-serif text-3xl leading-tight md:text-5xl;
+  }
+  .pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-xs font-bold uppercase tracking-[.1em] transition duration-300 hover:-translate-y-0.5;
+  }
+  .pill-g {
+    @apply pill bg-gold text-[#2a1d08] hover:brightness-110;
+  }
+  .pill-d {
+    @apply pill bg-panel2 text-cream hover:bg-[#33281a];
+  }
+  .chip {
+    @apply shrink-0 whitespace-nowrap rounded-full bg-panel2 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[.1em] transition hover:bg-[#33281a];
+  }
+  .chip[aria-selected="true"] {
+    @apply bg-gold text-[#2a1d08];
+  }
+  .card {
+    @apply rounded-2xl bg-panel2;
+  }
 }
-.no-scrollbar::-webkit-scrollbar {
+.noscroll::-webkit-scrollbar {
   display: none;
 }
-:focus-visible {
-  outline: 2px solid #e8c07a;
-  outline-offset: 3px;
+.noscroll {
+  scrollbar-width: none;
 }
-/* padding جانبي بيخلّي المحتوى في عرض أقصى 72rem ومتوسّط، من غير wrapper */
-.px-page { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes zoom {
+  from {
+    transform: scale(1.07);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes sheet {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes pulseDot {
+  50% {
+    opacity: 0.35;
+  }
+}
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.d1 {
+  animation-delay: 0.12s;
+}
+.d2 {
+  animation-delay: 0.24s;
+}
+.d3 {
+  animation-delay: 0.36s;
+}
+.d4 {
+  animation-delay: 0.5s;
+}
+.hero-img {
+  animation: zoom 1.8s ease-out both;
+}
+.dot {
+  animation: pulseDot 1.8s infinite;
+}
+dialog[open] {
+  animation: sheet 0.35s ease-out;
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fadeUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+/* Modern scrollbar for the work modal */
+.modal-scroll {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--gold, #c9a45c) var(--panel, #1a1a1a);
+}
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: var(--panel, #1a1a1a);
+  border-radius: 999px;
+  margin: 8px 0;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--gold, #c9a45c),
+    var(--gold-dark, #8f7238)
+  );
+  border-radius: 999px;
+  border: 2px solid var(--panel, #1a1a1a); /* بيدي شكل thumb رفيع وطافي */
+}
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--gold, #c9a45c);
+}
